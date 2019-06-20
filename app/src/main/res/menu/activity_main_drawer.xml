@@ -6,32 +6,33 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:icon="@drawable/ic_person_black"
+            android:title="Perfil" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:icon="@drawable/ic_badge"
+            android:title="Histórico de Compras" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:icon="@drawable/ic_history_black"
+            android:title="Histórico de Anúncios" />
         <item
             android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:icon="@drawable/ic_book_black"
+            android:title="Referências Bibliográficas" />
+        <item
+            android:icon="@drawable/ic_exit_to_app_black"
+            android:title="Sair" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Regulamentos">
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
+                android:title="Política de Privacidade" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:title="Termos de Utilização" />
         </menu>
     </item>
 
