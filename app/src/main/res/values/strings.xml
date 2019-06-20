@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Escambinho</string>
+    <string name="escambinho">escambinho</string>
+    <string name="unb">unb</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="login">Login</string>
 </resources>
