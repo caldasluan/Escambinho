@@ -80,13 +80,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        ImageView image = findViewById(R.id.nav_header_image);
-        TextView name = findViewById(R.id.nav_header_name);
-        TextView email = findViewById(R.id.nav_header_email);
-
-        Picasso.get().load(UserHelper.getUserModel().getImageUrl()).into(image);
-        name.setText(UserHelper.getUserModel().getName());
-        email.setText(UserHelper.getUserModel().getName());
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -95,6 +88,15 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        ImageView image = navigationView.getHeaderView(0).findViewById(R.id.nav_header_image);
+        TextView name = navigationView.getHeaderView(0).findViewById(R.id.nav_header_name);
+        TextView email = navigationView.getHeaderView(0).findViewById(R.id.nav_header_email);
+
+        if (UserHelper.getUserModel().getImageUrl() != null && !UserHelper.getUserModel().getImageUrl().isEmpty())
+            Picasso.get().load(UserHelper.getUserModel().getImageUrl()).into(image);
+        name.setText(UserHelper.getUserModel().getName());
+        email.setText(UserHelper.getUserModel().getEmail());
     }
 
     @Override

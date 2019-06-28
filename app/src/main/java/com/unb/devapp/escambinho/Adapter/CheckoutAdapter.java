@@ -17,7 +17,7 @@ import com.unb.devapp.escambinho.ViewHolder.EscambinhoViewHolder;
 import java.util.ArrayList;
 
 public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutViewHolder> {
-    private ArrayList<ItemModel> mList;
+    private ArrayList<ItemModel> mList = new ArrayList<>();
     private ClickInterface clickInterface;
 
     @NonNull

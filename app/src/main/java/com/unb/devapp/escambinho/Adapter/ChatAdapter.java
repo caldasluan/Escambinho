@@ -17,7 +17,7 @@ import com.unb.devapp.escambinho.ViewHolder.EscambinhoViewHolder;
 import java.util.ArrayList;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
-    ArrayList<ChatModel> mList;
+    ArrayList<ChatModel> mList = new ArrayList<>();
     private ClickInterface clickInterface;
 
     @NonNull
