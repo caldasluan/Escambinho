@@ -19,7 +19,7 @@ public class EscambinhoViewHolder extends RecyclerView.ViewHolder implements Vie
         image = itemView.findViewById(R.id.view_holder_escambinho_image);
     }
 
-    public void setOnClickListener(@NonNull View itemView, ClickInterface clickInterface) {
+    public void setOnClickListener(ClickInterface clickInterface) {
         itemView.setOnClickListener(this);
         this.clickInterface = clickInterface;
     }

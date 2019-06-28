@@ -32,7 +32,10 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CheckoutViewHolder holder, int position) {
-        Picasso.get().load(mList.get(position).getImageUrl()).into(holder.image);
+        if (mList.get(position).getImageUrl() == null || mList.get(position).getImageUrl().isEmpty())
+            Picasso.get().load(R.drawable.ic_badge).into(holder.image);
+        else
+            Picasso.get().load(mList.get(position).getImageUrl()).into(holder.image);
         holder.title.setText(mList.get(position).getTitle());
     }
 

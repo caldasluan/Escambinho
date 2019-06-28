@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.unb.devapp.escambinho.Adapter.CheckoutAdapter;
 import com.unb.devapp.escambinho.Adapter.EscambinhoAdapter;
+import com.unb.devapp.escambinho.Helper.DatabaseFirebase.ItemDatabaseHelper;
 import com.unb.devapp.escambinho.Model.ItemModel;
 import com.unb.devapp.escambinho.R;
 import com.unb.devapp.escambinho.Util.ClickInterface;
@@ -30,7 +31,7 @@ public class HistoricFragment extends SearchFragment implements ClickInterface {
 
     RecyclerView recyclerView;
     CheckoutAdapter checkoutAdapter;
-    private static ArrayList<ItemModel> mList;
+    private static ArrayList<ItemModel> mList = new ArrayList<>();
 
     public HistoricFragment() {
         // Required empty public constructor
@@ -50,7 +51,6 @@ public class HistoricFragment extends SearchFragment implements ClickInterface {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mList = new ArrayList<>();
 
         // Cria o RecyclerView
         recyclerView = getView().findViewById(R.id.fragment_checkout_recycler_view);
@@ -59,6 +59,12 @@ public class HistoricFragment extends SearchFragment implements ClickInterface {
         checkoutAdapter = new CheckoutAdapter();
         checkoutAdapter.setOnClick(this);
         recyclerView.setAdapter(checkoutAdapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        checkoutAdapter.setList(mList);
     }
 
     @Override
