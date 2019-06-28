@@ -1,7 +1,6 @@
 package com.unb.devapp.escambinho;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,7 +15,6 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -24,11 +22,13 @@ import com.unb.devapp.escambinho.Helper.DatabaseFirebase.UserDatabaseHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
-    MaterialButton mEntrar;
+    private MaterialButton mEntrar;
 
-    TextInputEditText mEmail, mSenha;
+    private TextInputEditText mEmail, mSenha;
 
     private FirebaseAuth mAuth;
+
+    private boolean first_auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signInVerify(final String sEmail, final String sPass) {
+        first_auth = false;
         mAuth.signInWithEmailAndPassword(sEmail, sPass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -88,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                             UserDatabaseHelper.getUserWithEmail(sEmail, new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    if(dataSnapshot.getValue() == null) {
+                                    if (dataSnapshot.getValue() == null) {
                                         Toast.makeText(LoginActivity.this, "Bem-vindo ao Escambinho Unb!",
                                                 Toast.LENGTH_SHORT).show();
 
@@ -97,6 +98,8 @@ public class LoginActivity extends AppCompatActivity {
                                         bundle.putString("email", sEmail);
                                         bundle.putString("senha", sPass);
                                         intent.putExtras(bundle);
+
+                                        first_auth = true;
 
                                         startActivity(intent);
 
@@ -109,9 +112,12 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             });
 
-                            Log.w("EmailSenha", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Senha incorreta!",
-                                    Toast.LENGTH_SHORT).show();
+                            if (!first_auth) {
+                                Log.w("EmailSenha", "signInWithEmail:failure", task.getException());
+                                Toast.makeText(LoginActivity.this, "Senha incorreta!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
                         }
 
                         // ...
