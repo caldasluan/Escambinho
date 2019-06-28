@@ -30,11 +30,14 @@ import com.unb.devapp.escambinho.Helper.UserHelper;
 import com.unb.devapp.escambinho.Model.ChatModel;
 import com.unb.devapp.escambinho.Model.ChatViewModel;
 import com.unb.devapp.escambinho.Model.ItemModel;
+import com.unb.devapp.escambinho.Model.MessageModel;
 import com.unb.devapp.escambinho.Model.UserModel;
 import com.unb.devapp.escambinho.R;
 import com.unb.devapp.escambinho.Util.ClickInterface;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 
@@ -91,9 +94,17 @@ public class ChatFragment extends SearchFragment implements ClickInterface, Valu
 
                             final ChatModel chatModel = dataSnapshot.getValue(ChatModel.class);
                             if (chatModel.getMessages().size() > 0) {
-                                Iterator<String> iterable = chatModel.getMessages().keySet().iterator();
-                                while (iterable.hasNext()) messageId = iterable.next();
-                                tempMessage = chatModel.getMessages().get(messageId).getMessage();
+                                ArrayList<MessageModel> list = new ArrayList<>();
+                                for (String keyChat : chatModel.getMessages().keySet()) {
+                                    list.add(chatModel.getMessages().get(keyChat));
+                                }
+                                Collections.sort(list, new Comparator<MessageModel>() {
+                                    @Override
+                                    public int compare(MessageModel messageModel, MessageModel t1) {
+                                        return messageModel.getId().compareTo(t1.getId());
+                                    }
+                                });
+                                tempMessage = list.get(list.size()-1).getMessage();
                             }
 
                             final String message = tempMessage;
@@ -146,7 +157,7 @@ public class ChatFragment extends SearchFragment implements ClickInterface, Valu
     public void onClick(View view, int position) {
         Intent intent = new Intent();
         intent.setClass(getContext(), ChatActivity.class);
-        intent.putExtra(ChatActivity.ID_CHAT, UserHelper.getUserModel().getChats().get(mList.get(position).getChatId()));
+        intent.putExtra(ChatActivity.ID_CHAT, mList.get(position).getChatId());
         startActivity(intent);
     }
 
