@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class ChatModel implements Serializable {
     String id, user1, user2;
-    HashMap<String, MessageModel> messages;
+    HashMap<String, MessageModel> messages = new HashMap<>();
 
     public ChatModel() {
     }

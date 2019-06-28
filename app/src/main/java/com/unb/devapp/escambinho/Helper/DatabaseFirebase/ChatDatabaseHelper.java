@@ -24,4 +24,8 @@ public class ChatDatabaseHelper extends FirebaseDatabaseHelper {
                 .child(getDatabaseReference(CHAT).child(id).push().getKey())
                 .setValue(messageModel).addOnSuccessListener(successListener);
     }
+
+    public static void getChatId(String id, ValueEventListener valueEventListener) {
+        getDatabaseReference(CHAT).child(id).addListenerForSingleValueEvent(valueEventListener);
+    }
 }

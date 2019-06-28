@@ -22,7 +22,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.unb.devapp.escambinho.Adapter.EscambinhoAdapter;
 import com.unb.devapp.escambinho.Helper.DatabaseFirebase.ItemDatabaseHelper;
+import com.unb.devapp.escambinho.Helper.DatabaseFirebase.UserDatabaseHelper;
+import com.unb.devapp.escambinho.Helper.UserHelper;
 import com.unb.devapp.escambinho.Model.ItemModel;
+import com.unb.devapp.escambinho.Model.UserModel;
 import com.unb.devapp.escambinho.R;
 import com.unb.devapp.escambinho.Util.ClickInterface;
 
@@ -66,6 +69,18 @@ public class EscambinhoFragment extends SearchFragment implements ClickInterface
     public void onResume() {
         super.onResume();
         ItemDatabaseHelper.getAllItems(this);
+        UserDatabaseHelper.getUser(UserHelper.getUserModel().getId(), new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserModel userModel = dataSnapshot.getValue(UserModel.class);
+                UserHelper.setUserModel(userModel);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

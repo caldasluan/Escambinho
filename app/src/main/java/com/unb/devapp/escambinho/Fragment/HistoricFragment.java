@@ -76,6 +76,18 @@ public class HistoricFragment extends SearchFragment implements ClickInterface {
     public void onResume() {
         super.onResume();
         checkoutAdapter.setList(mList);
+        UserDatabaseHelper.getUser(UserHelper.getUserModel().getId(), new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserModel userModel = dataSnapshot.getValue(UserModel.class);
+                UserHelper.setUserModel(userModel);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
