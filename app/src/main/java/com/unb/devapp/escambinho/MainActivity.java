@@ -17,13 +17,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 import com.unb.devapp.escambinho.Adapter.ViewPagerAdapter;
+import com.unb.devapp.escambinho.Helper.UserHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
@@ -75,6 +79,14 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
+        ImageView image = findViewById(R.id.nav_header_image);
+        TextView name = findViewById(R.id.nav_header_name);
+        TextView email = findViewById(R.id.nav_header_email);
+
+        Picasso.get().load(UserHelper.getUserModel().getImageUrl()).into(image);
+        name.setText(UserHelper.getUserModel().getName());
+        email.setText(UserHelper.getUserModel().getName());
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -150,7 +162,7 @@ public class MainActivity extends AppCompatActivity
         return false;
     }
 
-    // Fazer o logout
+    // TODO Fazer o logout
     public void logout() {
 
     }

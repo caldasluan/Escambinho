@@ -26,6 +26,7 @@ public class UserHelper {
     }
 
     public static UserModel getUserModel() {
+        if (userModel == null) userModel = new UserModel();
         return userModel;
     }
 }
