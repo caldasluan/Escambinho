@@ -23,6 +23,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="init_chat">Iniciar Chat</string>
+    <string name="signup_title">Precisamos de mais algumas informações&#8230;</string>
+    <string name="signup_input_seu_nome">Seu nome</string>
+    <string name="signup_input_sua_data">Sua data de nascimento</string>
+    <string name="signup_input_sua_matr">Sua matrícula</string>
+    <string name="signup_input_seucur">Seu curso</string>
+    <string name="signup_btn_continuar">Continuar</string>
     <string name="name">Nome</string>
     <string name="happybirthday">Data de Nascimento</string>
     <string name="curse">Curso</string>
