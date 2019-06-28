@@ -29,4 +29,8 @@
     <string name="signup_input_sua_matr">Sua matrícula</string>
     <string name="signup_input_seucur">Seu curso</string>
     <string name="signup_btn_continuar">Continuar</string>
+    <string name="name">Nome</string>
+    <string name="happybirthday">Data de Nascimento</string>
+    <string name="curse">Curso</string>
+    <string name="registration">Matrícula</string>
 </resources>
