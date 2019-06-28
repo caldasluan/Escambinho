@@ -123,18 +123,14 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_profile) {
+            Intent intent = new Intent();
+            intent.setClass(this, ProfileActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_checkout) {
+            viewPager.setCurrentItem(1);
+        } else if (id == R.id.nav_logout) {
+            logout();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -152,5 +148,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onQueryTextChange(String newText) {
         return false;
+    }
+
+    // Fazer o logout
+    public void logout() {
+
     }
 }
