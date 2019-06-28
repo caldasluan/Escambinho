@@ -1,42 +1,65 @@
 package com.unb.devapp.escambinho;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CadastroActivity extends AppCompatActivity {
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputLayout;
+import com.unb.devapp.escambinho.Helper.DatabaseFirebase.ItemDatabaseHelper;
+import com.unb.devapp.escambinho.Helper.UserHelper;
+import com.unb.devapp.escambinho.Model.ItemModel;
 
-    ImageView mImgUpload;
-    TextView mTxtTitulo;
-    Button mBtnCadastrar;
+public class CadastroActivity extends AppCompatActivity implements View.OnClickListener {
 
+    TextView title;
+    ImageButton imageButton;
+    MaterialButton createButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Adicionar Item");
+        setSupportActionBar(toolbar);
 
-        mImgUpload = findViewById(R.id.cadastro_img_upload);
-        mTxtTitulo = findViewById(R.id.cadastro_titulo);
-        mBtnCadastrar = findViewById(R.id.cadastro_btn_anunciar);
+        title = findViewById(R.id.activity_cadastro_title);
+        imageButton = findViewById(R.id.activity_cadastro_image_upload);
+        createButton = findViewById(R.id.activity_cadastro_button);
+
+        imageButton.setOnClickListener(this);
+        createButton.setOnClickListener(this);
     }
 
-    public void filler() {
 
-        mBtnCadastrar.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.activity_cadastro_image_upload:
+
+                break;
+            case R.id.activity_cadastro_button:
+                registerItem();
+                break;
+        }
+    }
+
+    // TODO colocar imagem
+    private void registerItem() {
+        ItemModel itemModel = new ItemModel(UserHelper.getUserModel().getId(), title.getText().toString(), "");
+        ItemDatabaseHelper.createItem(itemModel, new OnSuccessListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onSuccess(Object o) {
+                finish();
             }
         });
-
-
     }
-
-    
 }

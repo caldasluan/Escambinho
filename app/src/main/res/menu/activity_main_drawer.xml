@@ -5,22 +5,23 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_profile"
             android:icon="@drawable/ic_person_black"
             android:title="Perfil" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_checkout"
             android:icon="@drawable/ic_badge"
-            android:title="Histórico de Compras" />
+            android:title="Mochila de Compras" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_historic"
             android:icon="@drawable/ic_history_black"
             android:title="Histórico de Anúncios" />
         <item
-            android:id="@+id/nav_tools"
+            android:id="@+id/nav_reference"
             android:icon="@drawable/ic_book_black"
             android:title="Referências Bibliográficas" />
         <item
+            android:id="@+id/nav_logout"
             android:icon="@drawable/ic_exit_to_app_black"
             android:title="Sair" />
     </group>

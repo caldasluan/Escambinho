@@ -30,7 +30,7 @@
             android:layout_height="wrap_content">
 
             <ImageButton
-                android:id="@+id/cadastro_img_upload"
+                android:id="@+id/activity_cadastro_image_upload"
                 android:layout_width="112dp"
                 android:layout_height="94dp"
                 android:layout_marginStart="8dp"
@@ -57,9 +57,10 @@
                 android:hint="@string/titulo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cadastro_img_upload">
+                app:layout_constraintTop_toBottomOf="@+id/activity_cadastro_image_upload">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_cadastro_title"
                     android:layout_width="match_parent"
                     android:layout_height="32dp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -78,6 +79,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_titulo">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_cadastro_author"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:hint="@string/autor" />
@@ -97,6 +99,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_autor">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_cadastro_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/editora" />
@@ -116,6 +119,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_editora">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_cadastro_edition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/edicao" />
@@ -135,6 +139,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_edicao">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_cadastro_year"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/ano" />
@@ -154,6 +159,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_ano">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_cadastro_page"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/paginas" />
@@ -173,6 +179,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_paginas">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_cadastro_condition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/condicao" />
@@ -192,6 +199,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_condicao">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_cadastro_description"
                     android:layout_width="match_parent"
                     android:layout_height="222dp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -238,12 +246,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/cadastro_descricao">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_cadastro_tags"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/cadastro_btn_anunciar"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/activity_cadastro_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="31dp"

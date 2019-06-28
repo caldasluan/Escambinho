@@ -17,13 +17,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 import com.unb.devapp.escambinho.Adapter.ViewPagerAdapter;
+import com.unb.devapp.escambinho.Helper.UserHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
@@ -76,6 +80,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        ImageView image = findViewById(R.id.nav_header_image);
+        TextView name = findViewById(R.id.nav_header_name);
+        TextView email = findViewById(R.id.nav_header_email);
+
+        Picasso.get().load(UserHelper.getUserModel().getImageUrl()).into(image);
+        name.setText(UserHelper.getUserModel().getName());
+        email.setText(UserHelper.getUserModel().getName());
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -123,18 +135,14 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_profile) {
+            Intent intent = new Intent();
+            intent.setClass(this, ProfileActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_checkout) {
+            viewPager.setCurrentItem(1);
+        } else if (id == R.id.nav_logout) {
+            logout();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -152,5 +160,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onQueryTextChange(String newText) {
         return false;
+    }
+
+    // TODO Fazer o logout
+    public void logout() {
+
     }
 }
