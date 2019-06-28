@@ -26,6 +26,11 @@ public class UserDatabaseHelper extends FirebaseDatabaseHelper {
         getDatabaseReference(USER).child(uid).addListenerForSingleValueEvent(eventListener);
     }
 
+    // Obtém dados do usuário com Email específica
+    public static void getUserWithEmail(String uid, ValueEventListener eventListener) {
+        getDatabaseReference(USER).orderByChild("email").equalTo(uid).addListenerForSingleValueEvent(eventListener);
+    }
+
     // Acompanha mudanças do usuário no banco de dados
     public static void getUser(String id, ValueEventListener eventListener) {
         getDatabaseReference(USER).child(id).addValueEventListener(eventListener);
