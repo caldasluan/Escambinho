@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserModel implements Serializable {
-    private String id, name, birthday, course, imageUrl;
+    private String id, name, birthday, course, imageUrl, email;
     Map<String, String> chats;
 
     public UserModel() {}
 
-    public UserModel(String id, String name, String birthday, String curse, String imageUrl, Map<String, String> chats) {
+    public UserModel(String id, String name, String birthday, String curse, String imageUrl, String email, Map<String, String> chats) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -19,7 +19,7 @@ public class UserModel implements Serializable {
         this.chats = chats;
     }
 
-    public UserModel(String id, String name, String birthday, String curse, String imageUrl) {
+    public UserModel(String id, String name, String birthday, String curse, String imageUrl, String email) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -74,5 +74,13 @@ public class UserModel implements Serializable {
 
     public void setChats(Map<String, String> chats) {
         this.chats = chats;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
