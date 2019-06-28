@@ -19,8 +19,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.unb.devapp.escambinho.Helper.DatabaseFirebase.UserDatabaseHelper;
-import com.unb.devapp.escambinho.Helper.UserHelper;
-import com.unb.devapp.escambinho.Model.UserModel;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -43,27 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         mEntrar = findViewById(R.id.disabled_material_button);
         mEmail = findViewById(R.id.login_edit_email);
         mSenha = findViewById(R.id.login_edit_senha);
-
-        if (mAuth.getCurrentUser() != null) {
-            UserDatabaseHelper.getUserWithEmail(mAuth.getCurrentUser().getEmail(), new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue() == null) return;
-
-                    UserModel userModel = dataSnapshot.getChildren().iterator().next().getValue(UserModel.class);
-                    UserHelper.setUserModel(userModel);
-                    Log.d("TesteUser", userModel.getName());
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        }
 
         mEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,11 +110,11 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             });
 
-//                            if (!first_auth) {
-//                                Log.w("EmailSenha", "signInWithEmail:failure", task.getException());
-//                                Toast.makeText(LoginActivity.this, "Senha incorreta!",
-//                                        Toast.LENGTH_SHORT).show();
-//                            }
+                            if (!first_auth) {
+                                Log.w("EmailSenha", "signInWithEmail:failure", task.getException());
+                                Toast.makeText(LoginActivity.this, "Senha incorreta!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
 
                         }
 
