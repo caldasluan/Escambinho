@@ -4,10 +4,17 @@ public class ItemModel {
     String id, userId, title, imageUrl;
 
     public ItemModel() {
+        imageUrl = "";
     }
 
     public ItemModel(String id, String userId, String title, String imageUrl) {
         this.id = id;
+        this.userId = userId;
+        this.title = title;
+        this.imageUrl = imageUrl;
+    }
+
+    public ItemModel(String userId, String title, String imageUrl) {
         this.userId = userId;
         this.title = title;
         this.imageUrl = imageUrl;
