@@ -12,8 +12,8 @@ import com.unb.devapp.escambinho.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessageViewHolder extends RecyclerView.ViewHolder {
-    CircleImageView image;
-    TextView message;
+    public CircleImageView image;
+    public TextView message;
 
     public MessageViewHolder(@NonNull View itemView, int itemType) {
         super(itemView);

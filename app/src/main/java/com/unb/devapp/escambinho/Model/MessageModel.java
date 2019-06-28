@@ -1,13 +1,18 @@
 package com.unb.devapp.escambinho.Model;
 
 public class MessageModel {
-    String userId, message;
+    String id, userId, message;
 
     public MessageModel() {
     }
 
     public MessageModel(String userId, String message) {
         this.userId = userId;
+        this.message = message;
+    }
+    public MessageModel(String id, String userId, String message) {
+        this.userId = userId;
+        this.id = id;
         this.message = message;
     }
 
@@ -25,5 +30,13 @@ public class MessageModel {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

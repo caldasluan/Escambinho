@@ -18,14 +18,16 @@ public class ChatDatabaseHelper extends FirebaseDatabaseHelper {
 
     // Cria uma mensagem no chat no banco
     public static void createMessage(String id, MessageModel messageModel, OnSuccessListener successListener) {
+        String chatId = getDatabaseReference(CHAT).child(id).push().getKey();
+        messageModel.setId(chatId);
         getDatabaseReference(CHAT)
                 .child(id)
                 .child("messages")
-                .child(getDatabaseReference(CHAT).child(id).push().getKey())
+                .child(chatId)
                 .setValue(messageModel).addOnSuccessListener(successListener);
     }
 
     public static void getChatId(String id, ValueEventListener valueEventListener) {
-        getDatabaseReference(CHAT).child(id).addListenerForSingleValueEvent(valueEventListener);
+        getDatabaseReference(CHAT).child(id).addValueEventListener(valueEventListener);
     }
 }
