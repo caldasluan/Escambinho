@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class UserModel implements Serializable {
     private String id, name, birthday, course, imageUrl, email;
-    Map<String, String> chats;
+    Map<String, String> chats = new HashMap<>();
 
     public UserModel() {}
 

@@ -1,6 +1,7 @@
 package com.unb.devapp.escambinho.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -11,17 +12,26 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.unb.devapp.escambinho.Adapter.CheckoutAdapter;
 import com.unb.devapp.escambinho.Adapter.EscambinhoAdapter;
+import com.unb.devapp.escambinho.ChatActivity;
+import com.unb.devapp.escambinho.Helper.DatabaseFirebase.ChatDatabaseHelper;
 import com.unb.devapp.escambinho.Helper.DatabaseFirebase.ItemDatabaseHelper;
+import com.unb.devapp.escambinho.Helper.DatabaseFirebase.UserDatabaseHelper;
+import com.unb.devapp.escambinho.Helper.UserHelper;
+import com.unb.devapp.escambinho.Model.ChatModel;
 import com.unb.devapp.escambinho.Model.ItemModel;
+import com.unb.devapp.escambinho.Model.UserModel;
 import com.unb.devapp.escambinho.R;
 import com.unb.devapp.escambinho.Util.ClickInterface;
 
@@ -31,6 +41,7 @@ public class HistoricFragment extends SearchFragment implements ClickInterface {
 
     RecyclerView recyclerView;
     CheckoutAdapter checkoutAdapter;
+    String chatId;
     private static ArrayList<ItemModel> mList = new ArrayList<>();
 
     public HistoricFragment() {
@@ -74,7 +85,32 @@ public class HistoricFragment extends SearchFragment implements ClickInterface {
 
     @Override
     public void onClick(View view, int position) {
-        // TODO Criar
+        final ItemModel itemModel = mList.get(position);
+        if (itemModel.getUserId().equals(UserHelper.getUserModel().getId())) {
+            Toast.makeText(getContext(), "Você já é o dono disso!", Toast.LENGTH_SHORT).show();
+        }
+        else if (UserHelper.getUserModel().getChats().get(itemModel.getUserId()) == null ||
+                UserHelper.getUserModel().getChats().get(itemModel.getUserId()).isEmpty()) {
+            ChatModel chatModel = new ChatModel(UserHelper.getUserModel().getId(), itemModel.getUserId());
+            chatId = ChatDatabaseHelper.createChat(chatModel, new OnSuccessListener() {
+                @Override
+                public void onSuccess(Object o) {
+                    UserDatabaseHelper.addChat(UserHelper.getUserModel().getId(), itemModel.getUserId(), chatId, null);
+                    UserDatabaseHelper.addChat(itemModel.getUserId(), UserHelper.getUserModel().getId(), chatId, null);
+                    initChat(chatId);
+                }
+            });
+        }
+        else {
+            initChat(itemModel.getUserId());
+        }
+    }
+
+    public void initChat(String id) {
+        Intent intent = new Intent();
+        intent.setClass(getContext(), ChatActivity.class);
+        intent.putExtra(ChatActivity.ID_CHAT, UserHelper.getUserModel().getChats().get(id));
+        startActivity(intent);
     }
 
     public static void addItem(ItemModel item) {

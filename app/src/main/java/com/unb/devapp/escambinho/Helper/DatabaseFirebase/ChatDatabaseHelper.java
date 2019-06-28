@@ -9,9 +9,11 @@ import com.unb.devapp.escambinho.Model.MessageModel;
 
 public class ChatDatabaseHelper extends FirebaseDatabaseHelper {
     // Cria o chat no banco
-    public static void createChat(ChatModel chatModel, OnSuccessListener successListener) {
-        chatModel.setId(getDatabaseReference(CHAT).push().getKey());
+    public static String createChat(ChatModel chatModel, OnSuccessListener successListener) {
+        String id = getDatabaseReference(CHAT).push().getKey();
+        chatModel.setId(id);
         getDatabaseReference(CHAT).child(chatModel.getId()).setValue(chatModel).addOnSuccessListener(successListener);
+        return id;
     }
 
     // Cria uma mensagem no chat no banco

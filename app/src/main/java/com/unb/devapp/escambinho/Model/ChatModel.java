@@ -17,6 +17,11 @@ public class ChatModel implements Serializable {
         this.messages = messages;
     }
 
+    public ChatModel(String user1, String user2) {
+        this.user1 = user1;
+        this.user2 = user2;
+    }
+
     public String getId() {
         return id;
     }
