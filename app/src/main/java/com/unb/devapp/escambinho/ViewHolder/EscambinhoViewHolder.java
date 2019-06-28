@@ -1,4 +1,4 @@
-package com.unb.devapp.escambinho.Adapter;
+package com.unb.devapp.escambinho.ViewHolder;
 
 import android.view.View;
 import android.widget.ImageView;
