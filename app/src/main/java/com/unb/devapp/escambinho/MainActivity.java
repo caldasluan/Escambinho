@@ -14,6 +14,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,9 +26,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.unb.devapp.escambinho.Adapter.ViewPagerAdapter;
+import com.unb.devapp.escambinho.Helper.DatabaseFirebase.UserDatabaseHelper;
 import com.unb.devapp.escambinho.Helper.UserHelper;
+import com.unb.devapp.escambinho.Model.UserModel;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
@@ -36,8 +43,30 @@ public class MainActivity extends AppCompatActivity
     BottomNavigationView bottomNavigationView;
     ViewPager viewPager;
 
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mAuth = FirebaseAuth.getInstance();
+
+        if (mAuth.getCurrentUser() != null) {
+            UserDatabaseHelper.getUserWithEmail(mAuth.getCurrentUser().getEmail(), new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.getValue() == null) return;
+
+                    UserModel userModel = dataSnapshot.getChildren().iterator().next().getValue(UserModel.class);
+                    UserHelper.setUserModel(userModel);
+                    Log.d("TesteUser", userModel.getName());
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -166,6 +195,10 @@ public class MainActivity extends AppCompatActivity
 
     // TODO Fazer o logout
     public void logout() {
+        mAuth.signOut();
+        UserHelper.setUserModel(null);
 
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
     }
 }
