@@ -33,4 +33,15 @@
     <string name="happybirthday">Data de Nascimento</string>
     <string name="curse">Curso</string>
     <string name="registration">Matrícula</string>
+    <string name="upload_da_foto">Upload da foto</string>
+    <string name="titulo">Título</string>
+    <string name="autor">Autor</string>
+    <string name="editora">Editora</string>
+    <string name="edicao">Edição</string>
+    <string name="ano">Ano</string>
+    <string name="paginas">Páginas</string>
+    <string name="condicao">Condição</string>
+    <string name="descricao">Descrição</string>
+    <string name="tags">Tags</string>
+    <string name="anunciar">Anunciar</string>
 </resources>
