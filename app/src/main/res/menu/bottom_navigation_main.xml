@@ -3,12 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/bottom_escambinho"
         android:icon="@drawable/ic_fish"
-        android:title="Teste" />
+        android:title="Escambinho" />
     <item
+        android:id="@+id/bottom_historic"
         android:icon="@drawable/ic_badge"
-        android:title="Item" />
+        android:title="Histórico" />
     <item
+        android:id="@+id/bottom_chat"
         android:icon="@drawable/ic_chat_bubble_white"
-        android:title="Item" />
+        android:title="Chat" />
 </menu>
