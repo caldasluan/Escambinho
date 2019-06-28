@@ -8,7 +8,7 @@
     tools:context=".SignUpActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/signup_text_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
+        android:id="@+id/signup_input_nome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -37,15 +37,16 @@
         android:hint="@string/signup_input_seu_nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/signup_text_title">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signup_edit_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/signup_input_birth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -57,37 +58,38 @@
         app:helperTextTextColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout3">
+        app:layout_constraintTop_toBottomOf="@id/signup_input_nome">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signup_edit_birth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout5"
+        android:id="@+id/singup_input_matricula"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:hint="@string/signup_input_sua_matr"
-        app:helperText="Deve conter a barra"
+        app:helperText="sem a barra"
         app:helperTextTextColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+        app:layout_constraintTop_toBottomOf="@+id/signup_input_curso">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signup_edit_matr"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout6"
+        android:id="@+id/signup_input_curso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -98,23 +100,24 @@
         android:hint="@string/signup_input_seucur"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout4">
+        app:layout_constraintTop_toBottomOf="@id/signup_input_birth">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signup_edit_curso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/signup_btn_next"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="@string/signup_btn_continuar"
         android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout5"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
+        app:layout_constraintEnd_toEndOf="@+id/singup_input_matricula"
+        app:layout_constraintTop_toBottomOf="@+id/singup_input_matricula" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

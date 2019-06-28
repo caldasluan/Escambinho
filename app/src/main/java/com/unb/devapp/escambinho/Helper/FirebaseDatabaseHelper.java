@@ -11,7 +11,6 @@ public abstract class FirebaseDatabaseHelper {
 
     protected static DatabaseReference getDatabaseReference(String reference) {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(true);
         return firebaseDatabase.getReference(reference);
     }
 }
