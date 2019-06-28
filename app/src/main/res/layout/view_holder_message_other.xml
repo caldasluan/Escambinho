@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/view_holder_message_other_image"
+        android:id="@+id/view_holder_message_image"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
@@ -19,7 +19,7 @@
         tools:src="@tools:sample/avatars[0]" />
 
     <TextView
-        android:id="@+id/view_holder_message_other_text"
+        android:id="@+id/view_holder_message_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -32,7 +32,7 @@
         android:textColor="@color/colorPrimaryLight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/view_holder_message_other_image"
+        app:layout_constraintStart_toEndOf="@+id/view_holder_message_image"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
