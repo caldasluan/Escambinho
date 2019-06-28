@@ -53,7 +53,7 @@
 
     <View
         android:id="@+id/divider"
-        android:layout_width="395dp"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="#D8DDDD"
         app:layout_constraintBottom_toBottomOf="parent"
