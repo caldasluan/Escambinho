@@ -11,6 +11,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class ChatActivity extends AppCompatActivity {
 
     TextInputLayout textInputLayout;
+    public static final String ID_CHAT = "id_chat";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

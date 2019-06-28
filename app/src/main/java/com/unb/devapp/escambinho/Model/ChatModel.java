@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class ChatModel implements Serializable {
     String id, user1, user2;
-    HashMap<String, MessageModel> messages;
+    HashMap<String, MessageModel> messages = new HashMap<>();
 
     public ChatModel() {
     }
@@ -15,6 +15,11 @@ public class ChatModel implements Serializable {
         this.user1 = user1;
         this.user2 = user2;
         this.messages = messages;
+    }
+
+    public ChatModel(String user1, String user2) {
+        this.user1 = user1;
+        this.user2 = user2;
     }
 
     public String getId() {

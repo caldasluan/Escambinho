@@ -10,16 +10,22 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.unb.devapp.escambinho.Adapter.EscambinhoAdapter;
 import com.unb.devapp.escambinho.Helper.DatabaseFirebase.ItemDatabaseHelper;
+import com.unb.devapp.escambinho.Helper.DatabaseFirebase.UserDatabaseHelper;
+import com.unb.devapp.escambinho.Helper.UserHelper;
 import com.unb.devapp.escambinho.Model.ItemModel;
+import com.unb.devapp.escambinho.Model.UserModel;
 import com.unb.devapp.escambinho.R;
 import com.unb.devapp.escambinho.Util.ClickInterface;
 
@@ -63,6 +69,18 @@ public class EscambinhoFragment extends SearchFragment implements ClickInterface
     public void onResume() {
         super.onResume();
         ItemDatabaseHelper.getAllItems(this);
+        UserDatabaseHelper.getUser(UserHelper.getUserModel().getId(), new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserModel userModel = dataSnapshot.getValue(UserModel.class);
+                UserHelper.setUserModel(userModel);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -72,7 +90,8 @@ public class EscambinhoFragment extends SearchFragment implements ClickInterface
 
     @Override
     public void onClick(View view, int position) {
-        // TODO Criar aqui
+        HistoricFragment.addItem(mList.get(position));
+        Toast.makeText(getContext(), "Adicionado à mochila", Toast.LENGTH_SHORT).show();
     }
 
     @Override

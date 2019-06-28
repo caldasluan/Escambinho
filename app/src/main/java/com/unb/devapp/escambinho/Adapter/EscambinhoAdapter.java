@@ -26,13 +26,16 @@ public class EscambinhoAdapter extends RecyclerView.Adapter<EscambinhoViewHolder
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.view_holder_escambinho, parent, false);
         EscambinhoViewHolder escambinhoViewHolder = new EscambinhoViewHolder(view);
-        escambinhoViewHolder.setOnClickListener(parent, clickInterface);
+        escambinhoViewHolder.setOnClickListener(clickInterface);
         return escambinhoViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull EscambinhoViewHolder holder, int position) {
-        Picasso.get().load(mList.get(position).getImageUrl()).into(holder.image);
+        if (mList.get(position).getImageUrl() == null || mList.get(position).getImageUrl().isEmpty())
+            Picasso.get().load(R.drawable.ic_badge).into(holder.image);
+        else
+            Picasso.get().load(mList.get(position).getImageUrl()).into(holder.image);
     }
 
     @Override

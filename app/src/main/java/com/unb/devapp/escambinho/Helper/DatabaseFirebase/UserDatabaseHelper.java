@@ -35,4 +35,9 @@ public class UserDatabaseHelper extends FirebaseDatabaseHelper {
     public static void getUser(String id, ValueEventListener eventListener) {
         getDatabaseReference(USER).child(id).addValueEventListener(eventListener);
     }
+
+    // Adiciona chat
+    public static void addChat(String idUser, String idOtherUser, String idChat, OnSuccessListener onSuccessListener) {
+        getDatabaseReference(USER).child(idUser).child("chats").child(idOtherUser).setValue(idChat).addOnSuccessListener(onSuccessListener);
+    }
 }
