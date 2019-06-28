@@ -1,6 +1,7 @@
 package com.unb.devapp.escambinho;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,10 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Adicionar Item");
+        setSupportActionBar(toolbar);
 
         title = findViewById(R.id.activity_cadastro_title);
         imageButton = findViewById(R.id.activity_cadastro_image_upload);
