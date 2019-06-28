@@ -53,7 +53,7 @@ public class HistoricFragment extends SearchFragment implements ClickInterface {
         mList = new ArrayList<>();
 
         // Cria o RecyclerView
-        recyclerView = getView().findViewById(R.id.fragment_escambinho_recycler_view);
+        recyclerView = getView().findViewById(R.id.fragment_checkout_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         checkoutAdapter = new CheckoutAdapter();
