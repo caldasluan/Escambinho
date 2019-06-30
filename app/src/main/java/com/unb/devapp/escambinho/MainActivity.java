@@ -25,9 +25,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 import com.unb.devapp.escambinho.Adapter.ViewPagerAdapter;
 import com.unb.devapp.escambinho.Helper.UserHelper;
+import com.unb.devapp.escambinho.Model.UserModel;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
@@ -36,8 +38,13 @@ public class MainActivity extends AppCompatActivity
     BottomNavigationView bottomNavigationView;
     ViewPager viewPager;
 
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mAuth = FirebaseAuth.getInstance();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -164,8 +171,15 @@ public class MainActivity extends AppCompatActivity
         return false;
     }
 
-    // TODO Fazer o logout
     public void logout() {
+        mAuth.signOut();
 
+        UserModel userModel = new UserModel();
+        UserHelper.setUserModel(userModel);
+
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+
+        finish();
     }
 }
