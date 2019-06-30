@@ -23,7 +23,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="init_chat">Iniciar Chat</string>
-    <string name="signup_title">Precisamos de mais\nalgumas informações&#8230;</string>
+    <string name="signup_title">Olá! Você é novo aqui!\nPrecisamos de mais algumas informações&#8230;</string>
     <string name="signup_input_seu_nome">Seu nome</string>
     <string name="signup_input_sua_data">Sua data de nascimento</string>
     <string name="signup_input_sua_matr">Sua matrícula</string>
@@ -44,4 +44,5 @@
     <string name="descricao">Descrição</string>
     <string name="tags">Tags</string>
     <string name="anunciar">Anunciar</string>
+    <string name="signup_btn_naoenovo">Não é um usuário novo?\nVoltar e verificar e-mail</string>
 </resources>

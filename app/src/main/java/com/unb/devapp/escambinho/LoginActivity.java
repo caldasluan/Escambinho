@@ -119,8 +119,6 @@ public class LoginActivity extends AppCompatActivity {
                                         first_auth = true;
 
                                         startActivity(intent);
-
-                                        finish();
                                     }
                                     else {
                                         Toast.makeText(LoginActivity.this, "Senha incorreta!",
