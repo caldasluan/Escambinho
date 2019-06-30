@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Escambinho</string>
+    <string name="escambinho">escambinho</string>
+    <string name="unb">unb</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="login">Login</string>
+    <string name="pesquisar_produto">Pesquisar produto</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="init_chat">Iniciar Chat</string>
+    <string name="signup_title">Precisamos de mais\nalgumas informações&#8230;</string>
+    <string name="signup_input_seu_nome">Seu nome</string>
+    <string name="signup_input_sua_data">Sua data de nascimento</string>
+    <string name="signup_input_sua_matr">Sua matrícula</string>
+    <string name="signup_input_seucur">Seu curso</string>
+    <string name="signup_btn_continuar">Continuar</string>
+    <string name="name">Nome</string>
+    <string name="happybirthday">Data de Nascimento</string>
+    <string name="curse">Curso</string>
+    <string name="registration">Matrícula</string>
+    <string name="upload_da_foto">Upload da foto</string>
+    <string name="titulo">Título</string>
+    <string name="autor">Autor</string>
+    <string name="editora">Editora</string>
+    <string name="edicao">Edição</string>
+    <string name="ano">Ano</string>
+    <string name="paginas">Páginas</string>
+    <string name="condicao">Condição</string>
+    <string name="descricao">Descrição</string>
+    <string name="tags">Tags</string>
+    <string name="anunciar">Anunciar</string>
+</resources>
