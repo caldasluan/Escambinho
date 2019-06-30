@@ -16,7 +16,11 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.unb.devapp.escambinho.Helper.DatabaseFirebase.UserDatabaseHelper;
+import com.unb.devapp.escambinho.Helper.UserHelper;
 import com.unb.devapp.escambinho.Model.UserModel;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -78,9 +82,24 @@ public class SignUpActivity extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d("EmailSenha", "createUserWithEmail:success");
 
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    UserDatabaseHelper.getUserWithEmail(mAuth.getCurrentUser().getEmail(), new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            if (dataSnapshot.getValue() == null) return;
+
+                                            UserModel userModel = dataSnapshot.getChildren().iterator().next().getValue(UserModel.class);
+                                            UserHelper.setUserModel(userModel);
+                                            Log.d("ReconnectUser", userModel.getName());
+                                            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
                                 }
                             });
                         } else {
