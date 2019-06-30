@@ -25,7 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private UserModel userModel;
 
-    private MaterialButton mContinuar;
+    private MaterialButton mContinuar, mGoback;
 
     private TextInputEditText mName, mBirth, mCourse, mMatr;
 
@@ -37,6 +37,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         mContinuar = findViewById(R.id.signup_btn_next);
+        mGoback = findViewById(R.id.signup_btn_goback);
 
         mName = findViewById(R.id.signup_edit_nome);
         mBirth = findViewById(R.id.signup_edit_birth);
@@ -58,6 +59,13 @@ public class SignUpActivity extends AppCompatActivity {
                 userModel.setEmail(bEmail);
 
                 signUpVerify(userModel, bEmail, bPass);
+            }
+        });
+
+        mGoback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
