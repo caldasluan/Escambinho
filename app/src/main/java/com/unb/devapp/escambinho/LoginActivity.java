@@ -32,16 +32,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
-
-        mEntrar = findViewById(R.id.disabled_material_button);
-        mEmail = findViewById(R.id.login_edit_email);
-        mSenha = findViewById(R.id.login_edit_senha);
-
         if (mAuth.getCurrentUser() != null) {
             UserDatabaseHelper.getUserWithEmail(mAuth.getCurrentUser().getEmail(), new ValueEventListener() {
                 @Override
@@ -62,6 +54,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
+
+        setTheme(R.style.AppTheme);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+        mEntrar = findViewById(R.id.disabled_material_button);
+        mEmail = findViewById(R.id.login_edit_email);
+        mSenha = findViewById(R.id.login_edit_senha);
 
         mEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
