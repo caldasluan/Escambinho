@@ -30,8 +30,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    private boolean first_auth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -52,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     UserModel userModel = dataSnapshot.getChildren().iterator().next().getValue(UserModel.class);
                     UserHelper.setUserModel(userModel);
-                    Log.d("TesteUser", userModel.getName());
+                    Log.d("ReconnectUser", userModel.getName());
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
@@ -83,7 +81,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signInVerify(final String sEmail, final String sPass) {
-        first_auth = false;
         mAuth.signInWithEmailAndPassword(sEmail, sPass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -96,9 +93,24 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
 
 
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                            UserDatabaseHelper.getUserWithEmail(mAuth.getCurrentUser().getEmail(), new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.getValue() == null) return;
+
+                                    UserModel userModel = dataSnapshot.getChildren().iterator().next().getValue(UserModel.class);
+                                    UserHelper.setUserModel(userModel);
+                                    Log.d("ReconnectUser", userModel.getName());
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -116,8 +128,6 @@ public class LoginActivity extends AppCompatActivity {
                                         bundle.putString("senha", sPass);
                                         intent.putExtras(bundle);
 
-                                        first_auth = true;
-
                                         startActivity(intent);
 
                                         finish();
@@ -132,12 +142,6 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onCancelled(@NonNull DatabaseError databaseError) {
                                 }
                             });
-
-//                            if (!first_auth) {
-//                                Log.w("EmailSenha", "signInWithEmail:failure", task.getException());
-//                                Toast.makeText(LoginActivity.this, "Senha incorreta!",
-//                                        Toast.LENGTH_SHORT).show();
-//                            }
 
                         }
 
