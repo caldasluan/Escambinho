@@ -18,9 +18,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.unb.devapp.escambinho.Adapter.ChatAdapter;
 import com.unb.devapp.escambinho.Adapter.MessageAdapter;
 import com.unb.devapp.escambinho.Helper.DatabaseFirebase.ChatDatabaseHelper;
+import com.unb.devapp.escambinho.Helper.DatabaseFirebase.UserDatabaseHelper;
 import com.unb.devapp.escambinho.Helper.UserHelper;
 import com.unb.devapp.escambinho.Model.ChatModel;
 import com.unb.devapp.escambinho.Model.MessageModel;
+import com.unb.devapp.escambinho.Model.UserModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -68,6 +70,19 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 });
                 messageAdapter.setList(mList);
+                UserDatabaseHelper.getUserWithUid(UserHelper.getUserModel().getId().equals(chatModel.getUser1()) ? chatModel.getUser2() : chatModel.getUser1(), new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.getValue() == null) return;
+                        UserModel userModel = dataSnapshot.getValue(UserModel.class);
+                        messageAdapter.setImageUrl(userModel.getImageUrl());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @Override

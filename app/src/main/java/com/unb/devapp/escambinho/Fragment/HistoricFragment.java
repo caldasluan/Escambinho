@@ -109,7 +109,8 @@ public class HistoricFragment extends SearchFragment implements ClickInterface {
                 public void onSuccess(Object o) {
                     UserDatabaseHelper.addChat(UserHelper.getUserModel().getId(), itemModel.getUserId(), chatId, null);
                     UserDatabaseHelper.addChat(itemModel.getUserId(), UserHelper.getUserModel().getId(), chatId, null);
-                    initChat(chatId);
+                    Log.d("TestChat", chatId);
+                    initChat(chatId, true);
                 }
             });
         }
@@ -122,6 +123,13 @@ public class HistoricFragment extends SearchFragment implements ClickInterface {
         Intent intent = new Intent();
         intent.setClass(getContext(), ChatActivity.class);
         intent.putExtra(ChatActivity.ID_CHAT, UserHelper.getUserModel().getChats().get(id));
+        startActivity(intent);
+    }
+
+    public void initChat(String id, boolean isId) {
+        Intent intent = new Intent();
+        intent.setClass(getContext(), ChatActivity.class);
+        intent.putExtra(ChatActivity.ID_CHAT, chatId);
         startActivity(intent);
     }
 

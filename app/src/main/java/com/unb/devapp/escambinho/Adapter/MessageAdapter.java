@@ -21,6 +21,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
     private ArrayList<MessageModel> mList = new ArrayList<>();
     public static int MY_MESSAGE = 0;
     public static int OTHER_MESSAGE = 1;
+    private String imageUrl = "";
 
     @NonNull
     @Override
@@ -39,8 +40,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
         holder.message.setText(mList.get(position).getMessage());
-        if (!mList.get(position).getUserId().equals(UserHelper.getUserModel().getId()))
-            Picasso.get().load(R.drawable.ic_person_black).into(holder.image);
+        if (!mList.get(position).getUserId().equals(UserHelper.getUserModel().getId())) {
+            if (imageUrl == null || imageUrl.isEmpty())
+                Picasso.get().load(R.drawable.ic_person_black).into(holder.image);
+            else
+                Picasso.get().load(imageUrl).into(holder.image);
+        }
+
     }
 
     @Override
@@ -55,6 +61,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     public void setList(ArrayList list) {
         mList = list;
+        notifyDataSetChanged();
+    }
+
+    public void setImageUrl(String img) {
+        imageUrl = img;
         notifyDataSetChanged();
     }
 }
