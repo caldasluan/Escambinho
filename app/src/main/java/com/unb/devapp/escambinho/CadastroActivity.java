@@ -33,7 +33,7 @@ import com.unb.devapp.escambinho.Model.ItemModel;
 
 public class CadastroActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView title;
+    TextView title, autor, editora, edicao, ano, paginas, condicao, descricao, tags;
     ImageButton imageButton;
     MaterialButton createButton;
     Uri mCropImageUri;
@@ -48,6 +48,14 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         setSupportActionBar(toolbar);
 
         title = findViewById(R.id.activity_cadastro_title);
+        autor = findViewById(R.id.activity_cadastro_author);
+        editora = findViewById(R.id.activity_cadastro_edit);
+        edicao = findViewById(R.id.activity_cadastro_edition);
+        ano = findViewById(R.id.activity_cadastro_year);
+        paginas = findViewById(R.id.activity_cadastro_page);
+        condicao = findViewById(R.id.activity_cadastro_condition);
+        descricao = findViewById(R.id.activity_cadastro_description);
+        tags = findViewById(R.id.activity_cadastro_tags);
         imageButton = findViewById(R.id.activity_cadastro_image_upload);
         createButton = findViewById(R.id.activity_cadastro_button);
 
@@ -98,7 +106,18 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void saveItem(String imageUrl) {
-        ItemModel itemModel = new ItemModel(UserHelper.getUserModel().getId(), title.getText().toString(), imageUrl);
+        ItemModel itemModel = new ItemModel(
+                UserHelper.getUserModel().getId(),
+                title.getText().toString(),
+                imageUrl,
+                autor.getText().toString(),
+                editora.getText().toString(),
+                edicao.getText().toString(),
+                ano.getText().toString(),
+                paginas.getText().toString(),
+                condicao.getText().toString(),
+                descricao.getText().toString(),
+                tags.getText().toString());
         ItemDatabaseHelper.createItem(itemModel, new OnSuccessListener() {
             @Override
             public void onSuccess(Object o) {
