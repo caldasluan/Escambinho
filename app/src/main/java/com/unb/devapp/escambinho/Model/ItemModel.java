@@ -64,31 +64,63 @@ public class ItemModel {
         return autor;
     }
 
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
     public String getEditora() {
         return editora;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
     }
 
     public String getEdicao() {
         return edicao;
     }
 
+    public void setEdicao(String edicao) {
+        this.edicao = edicao;
+    }
+
     public String getAno() {
         return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
     }
 
     public String getPaginas() {
         return paginas;
     }
 
+    public void setPaginas(String paginas) {
+        this.paginas = paginas;
+    }
+
     public String getCondicao() {
         return condicao;
+    }
+
+    public void setCondicao(String condicao) {
+        this.condicao = condicao;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public String getTags() {
         return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 }
