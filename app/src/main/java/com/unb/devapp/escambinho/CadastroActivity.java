@@ -84,7 +84,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         } else {
             final StorageReference reference = FirebaseStorage.getInstance()
                     .getReference()
-                    .child("items");
+                    .child(String.valueOf(System.currentTimeMillis()));
             reference.putFile(mCropImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
