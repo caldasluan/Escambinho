@@ -18,7 +18,7 @@ import com.unb.devapp.escambinho.Model.UserModel;
 public class ItemInfoActivity extends AppCompatActivity {
 
     TextView name, title, autor, editora, edicao, ano, paginas, condicao, descricao, tags;
-    Button contactButton;
+    Button backpackButton;
     ImageView itemImage;
 
     @Override
@@ -33,7 +33,6 @@ public class ItemInfoActivity extends AppCompatActivity {
         itemImage = findViewById(R.id.activity_item_information_image);
         title = findViewById(R.id.activity_item_information_title);
         name = findViewById(R.id.activity_item_information_name);
-        contactButton = findViewById(R.id.activity_item_information_contact_button);
         autor = findViewById(R.id.activity_item_information_author_name);
         editora = findViewById(R.id.activity_item_information_publisher_name);
         edicao = findViewById(R.id.activity_item_information_edition_number);
@@ -42,6 +41,7 @@ public class ItemInfoActivity extends AppCompatActivity {
         condicao = findViewById(R.id.activity_item_information_condition_content);
         descricao = findViewById(R.id.activity_item_information_description_content);
         tags = findViewById(R.id.activity_item_information_tags_content);
+        backpackButton = findViewById(R.id.activity_item_information_backpack_button);
     }
 
 
