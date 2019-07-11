@@ -45,4 +45,15 @@
     <string name="tags">Tags</string>
     <string name="anunciar">Anunciar</string>
     <string name="signup_btn_naoenovo">Não é um usuário novo?\nVoltar e verificar e-mail</string>
+    <string name="item_photo">Item photo</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante quis leo consectetur tempus. Vivamus maximus feugiat felis at consequat. Pellentesque blandit consequat odio, sed dapibus turpis elementum sed. Nam a velit et tortor fermentum blandit venenatis sit amet quam. Aenean molestie faucibus justo nec pellentesque</string>
+    <string name="livro_de_design">Livro de Design</string>
+    <string name="cicraninho">Cicraninho</string>
+    <string name="contatar">Contatar</string>
+    <string name="anderson_macaquinho">Anderson Macaquinho</string>
+    <string name="editora_bananeira">Editora Bananeira</string>
+    <string name="_2a_edica">2a Edição</string>
+    <string name="_1988">1988</string>
+    <string name="_50">50</string>
+    <string name="tags_content">Livro, Design, Desenho Industrial, Tipos</string>
 </resources>
